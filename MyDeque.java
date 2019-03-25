@@ -79,10 +79,10 @@ public class MyDeque<E>{
     }
     if (size != 0) { //if stuff in array, find where to put it
       if(start == 0) {//if start the first one
-        start = data.length - 1; //set start to the end
+        start = data.length - 1; //set start to the end, loop around
         }
       else {
-        start -= 1; //if its not the first one, new start becomes the next one
+        start -= 1; //if its not the first one, new start becomes the one in front
       }
     }
     data[start] = element; //put it at the found start
@@ -90,14 +90,58 @@ public class MyDeque<E>{
    }
 
   public void addLast(E element){
-
+    if (element == null) {
+      throw new NullPointerException();//exception
+    }
+    if (size == data.length) { //check if needs resziing
+      resize();
+    }
+    if (size() != 0) { //if there is stuff
+      if (end == data.length - 1) {//same as addfirst, but you look for end instead of start
+        end = 0; //if end is the last one, loop around make end 0
+      }
+      else { // if not last one
+        end += 1; //make it the one after
+      }
+    }
+    data[end] = element; //insert it at found end
+    size += 1;
    }
+
   public E removeFirst(E element){
-
+    if (size == 0) {
+      throw new NoSuchElementException(); //for excpetion
+    }
+    if (size == 1) { //if only one
+      size = 0; //set size 0 and return
+      return data[start];
+    }
+    E first = data[start]; //set at start
+    start += 1; //move start up
+    if(start == data.length) { //if start is at the end
+      start = 0; //set start at 0; loop around
+    }
+    size -= 1; //remove 1 from size and return
+    return first;
    }
-  public E removeLast(E element){
 
+  public E removeLast(E element){
+    if (size == 0) {
+      throw new NoSuchElementException(); //for excpetion
+    }
+    if (size == 1) { //if only one
+      size = 0; //set size 0 and return
+      return data[start];
+    }
+    int last = end; //set at end
+    end -= 1;//make end one before
+    if (end == -1) { //if end is past
+      end = data.length; //end is the last one, data.length
+    }
+    size -= 1; //remove from size and return
+    return data[last];
   }
+
   public E getFirst(E element){
 
   }
