@@ -108,7 +108,7 @@ public class MyDeque<E>{
     size += 1;
    }
 
-  public E removeFirst(E element){
+  public E removeFirst(){
     if (size == 0) {
       throw new NoSuchElementException(); //for excpetion
     }
@@ -125,7 +125,7 @@ public class MyDeque<E>{
     return first;
    }
 
-  public E removeLast(E element){
+  public E removeLast(){
     if (size == 0) {
       throw new NoSuchElementException(); //for excpetion
     }
@@ -142,11 +142,18 @@ public class MyDeque<E>{
     return data[last];
   }
 
-  public E getFirst(E element){
-
+  public E getFirst(){ //just excpetion, return start
+    if (size == 0) {
+      throw new NoSuchElementException();
+    }
+    return data[start];
   }
-  public E getLast(E element){
 
+  public E getLast(){ //just excpetion,
+    if (size == 0) {
+      throw new NoSuchElementException();
+    }
+    return data[end];
   }
 
 }
