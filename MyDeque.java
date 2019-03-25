@@ -149,7 +149,7 @@ public class MyDeque<E>{
     return data[start];
   }
 
-  public E getLast(){ //just excpetion,
+  public E getLast(){ //just excpetion, 
     if (size == 0) {
       throw new NoSuchElementException();
     }
