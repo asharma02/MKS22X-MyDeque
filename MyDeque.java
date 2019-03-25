@@ -23,19 +23,31 @@ public class MyDeque<E>{
   public int size(){
     return size;
   }
-  
+
   public String toString(){
-    String printingarray = "[";
-    for (int i = 0; i < size(); i++){
-      if(i == 0 || i == size()){
-        printingarray += data[i];
-        }
-      else{
-        printingarray += ", " + data[i];
+    if (size() == 0) return "{}"; //if nothing in array
+    String output = "{";
+    for (int i = start; i < data.length && (start > end || (start <= end && i <= end)); i++){ //make sure u are inbound of start and end
+      output += data[i]; //add it
+      if (i != end) {  //if not at end, add space
+        output += " ";
+      }
+      else {
+        output += "}"; //if at end, add end bracket
       }
     }
-    printingarray += "]";
-    return printingarray;
+    if (start > end){ //start was greater then end, pick up left overs
+      for (int i = 0; i <= end; i++){
+        output += data[i];
+        if (i != end) {
+          output += " ";
+        }
+        else {
+          output += "}";
+        }
+      }
+    }
+    return output;//return
    }
 
   public void addFirst(E element){
