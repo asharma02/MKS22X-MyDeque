@@ -1,25 +1,43 @@
+import java.util.*;
+@SuppressWarnings("unchecked")
+
+
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
 
   public MyDeque(){
-    @SuppressWarnings("unchecked")
-    E[] d = (E[])new Object[10];
-    data = d;
+    size = 0;
+    start = 0;
+    end = 0;
+    data =(E[])new Object[10];
   }
 
   public MyDeque(int initialCapacity){
-    @SuppressWarnings("unchecked")
-    E[] d = (E[])new Object[initialCapacity];
-    data = d;
+    size = 0;
+    start = 0;
+    end = 0;
+    data =(E[])new Object[initialCapacity];
+  }
+
+  public int size(){
+    return size;
   }
   
-  public int size(){
-
-  }
   public String toString(){
-
+    String printingarray = "[";
+    for (int i = 0; i < size(); i++){
+      if(i == 0 || i == size()){
+        printingarray += data[i];
+        }
+      else{
+        printingarray += ", " + data[i];
+      }
+    }
+    printingarray += "]";
+    return printingarray;
    }
+
   public void addFirst(E element){
 
    }
@@ -38,4 +56,5 @@ public class MyDeque<E>{
   public E getLast(E element){
 
   }
+
 }
