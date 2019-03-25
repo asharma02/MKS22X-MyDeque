@@ -6,6 +6,7 @@ public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
 
+//constructors
   public MyDeque(){
     size = 0;
     start = 0;
