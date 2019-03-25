@@ -127,7 +127,7 @@ public class MyDeque<E>{
 
   public E removeLast(){
     if (size == 0) {
-      throw new NoSuchElementException(l); //for excpetion
+      throw new NoSuchElementException(); //for excpetion
     }
     if (size == 1) { //if only one
       size = 0; //set size 0 and return
