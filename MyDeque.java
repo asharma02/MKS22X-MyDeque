@@ -50,6 +50,25 @@ public class MyDeque<E>{
     return output;//return
    }
 
+   public void resize() { //made resize, kiran reccomended ty, very helpful to save time
+     //resizes and places eveeyrhing in order, less confuion, reset
+     E[] newdata = (E[]) new Object[data.length * 2 + 1];
+     int x = 0;
+     for (int i = start; i < data.length && (start > end || (start <= end && i <= end)); i++) { //inbounds?
+       newdata[x] = data[i];//add
+       x += 1;
+     }
+     if (start > end) { //pick up rest
+       for (int i = 0; i <= end; i++) {
+        newdata[x] = data[i];//add
+        x += 1;
+        }
+      }
+      data = newdata;
+      start = 0 ; //start is index -
+      end = size() - 1; //set end to last element
+    }
+
   public void addFirst(E element){
 
    }
