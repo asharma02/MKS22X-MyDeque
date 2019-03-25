@@ -70,9 +70,25 @@ public class MyDeque<E>{
       end = size() - 1; //set end to last element
     }
 
-  public void addFirst(E element){
-
+  public void addFirst(E element){ //adding to start of queue, find start
+    if (element == null) {
+      throw new NullPointerException(); //check for exception
+    }
+    if(data.length == size) {
+      resize(); //if its the size is at max of array, resize
+    }
+    if (size != 0) { //if stuff in array, find where to put it
+      if(start == 0) {//if start the first one
+        start = data.length - 1; //set start to the end
+        }
+      else {
+        start -= 1; //if its not the first one, new start becomes the next one
+      }
+    }
+    data[start] = element; //put it at the found start
+    size += 1;//add to size cause you added one more
    }
+
   public void addLast(E element){
 
    }
