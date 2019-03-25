@@ -127,7 +127,7 @@ public class MyDeque<E>{
 
   public E removeLast(){
     if (size == 0) {
-      throw new NoSuchElementException(); //for excpetion
+      throw new NoSuchElementException(l); //for excpetion
     }
     if (size == 1) { //if only one
       size = 0; //set size 0 and return
@@ -149,7 +149,7 @@ public class MyDeque<E>{
     return data[start];
   }
 
-  public E getLast(){ //just excpetion, 
+  public E getLast(){ //just excpetion, return end
     if (size == 0) {
       throw new NoSuchElementException();
     }
