@@ -5,13 +5,35 @@ public class Calculator{
      *Assume valid postfix notation, separated by spaces.
      */
     public static double eval(String s){
-      String[] vals = s.split(" ");
-      System.out.println(Arrays.toString(vals));
-      return 0.0;
+      String[] vals = s.split(" "); //split by space
+      //System.out.println(Arrays.toString(vals));
+      MyDeque<Double> deque = new MyDeque<Double>();
+      for (int i = 0; i < vals.length; i++) { //loop through array
+        Double two = deque.removeLast();
+        Double one = deque.removeLast();
+        if(vals[i].equals("+")){
+                  deque.addLast(one + two);
+                }
+                else if(vals[i].equals("-")){
+                  deque.addLast(one - two);
+                }
+                else if(vals[i].equals("*")){
+                  deque.addLast(one * two);
+                }
+                else if(vals[i].equals("/")){
+                  deque.addLast(one / two);
+                }
+                else if(vals[i].equals("%")){
+                  deque.addLast(one % two);
+                }
+                else{
+                  //if the value is not an operation
+                  deque.addLast(Double.parseDouble(vals[i]));
+                }
+              }
+      return deque.getLast();
+
     }
 
-public static void main(String[] args) {
-  System.out.println(eval("8 2 + 99 9 - * 2 + 9 -"));
-}
 
 }
