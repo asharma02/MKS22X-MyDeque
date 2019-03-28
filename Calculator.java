@@ -7,31 +7,40 @@ public class Calculator{
     public static double eval(String s){
       String[] vals = s.split(" "); //split by space
       //System.out.println(Arrays.toString(vals));
-      MyDeque<Double> deque = new MyDeque<Double>();
+      MyDeque<Double> expression = new MyDeque<Double>();
       for (int i = 0; i < vals.length; i++) { //loop through array
-        Double two = deque.removeLast();
-        Double one = deque.removeLast();
         if(vals[i].equals("+")){
-                  deque.addLast(one + two);
+                  Double firstval = expression.removeLast();
+                  Double secval = expression.removeLast();
+                  expression.addLast(secval + firstval);
                 }
                 else if(vals[i].equals("-")){
-                  deque.addLast(one - two);
+                  Double firstval = expression.removeLast();
+                  Double secval = expression.removeLast();
+                  expression.addLast(secval - firstval);
                 }
                 else if(vals[i].equals("*")){
-                  deque.addLast(one * two);
+                  Double firstval = expression.removeLast();
+                  Double secval = expression.removeLast();
+                  expression.addLast(secval * firstval);
                 }
                 else if(vals[i].equals("/")){
-                  deque.addLast(one / two);
+                  Double firstval = expression.removeLast();
+                  Double secval = expression.removeLast();
+                  expression.addLast(secval / firstval);
                 }
                 else if(vals[i].equals("%")){
-                  deque.addLast(one % two);
+                  Double firstval = expression.removeLast();
+                  Double secval = expression.removeLast();
+                  expression.addLast(secval % firstval);
                 }
                 else{
                   //if the value is not an operation
-                  deque.addLast(Double.parseDouble(vals[i]));
+                  Double x = Double.parseDouble(vals[i]);
+                  expression.addLast(x);
                 }
               }
-      return deque.getLast();
+      return expression.getLast();
 
     }
 
